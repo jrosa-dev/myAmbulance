@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title th:text="#{app.title}">myAmb</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<nav th:fragment="navbar" class="navbar navbar-light bg-dark border-bottom px-4">
+    <span class="navbar-brand text-light" th:text="#{app.title}"></span>
+
+    <div class="dropdown">
+        <button class="btn btn-outline-secondary btn-sm dropdown-toggle align-items-center"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false">
+            <span th:text="${#locale.language == 'en' ? 'EN' : 'PT'}">PT</span>
+        </button>
+
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="?lang=en">EN</a></li>
+            <li><a class="dropdown-item" href="?lang=pt">PT</a></li>
+        </ul>
+    </div>
+
+</nav>
+
+</body>
+</html>
