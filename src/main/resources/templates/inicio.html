@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/layout :: head}"></head>
-<body class="bg-dark">
+<body class="bg-light">
 
     <div th:replace="~{fragments/layout :: navbar}"></div>
 
-    <div class="container mt-5">
-        <button class="btn btn-primary" th:text="#{btn.newRegister}"></button>
-    </div>
 
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-7 d-grid gap-4">
+                <button sec:authorize="hasAnyRole('INTERN', 'ACTIVE', 'CHIEF', 'COMMAND')"
+                        th:text="#{btn.newRegister}" class="btn btn-primary py-5 py-lg-3"></button>
+
+                <button sec:authorize="hasAnyRole('ACTIVE', 'CHIEF', 'COMMAND')"
+                        th:text="#{btn.checkLatestRegister}" class="btn btn-primary py-5 py-lg-3"></button>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

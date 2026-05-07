@@ -1,20 +1,22 @@
 package com.jrosa.myAmb.controller;
 
-import com.jrosa.myAmb.constants.Constants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import static com.jrosa.myAmb.constants.Constants.MAPPING_HOME;
+
 @Controller
 public class HomeController {
 
-     @GetMapping(Constants.HOME)
-     public String home(HttpServletRequest request){
-         return Constants.HOME;
-     }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @GetMapping("/")
+    public String defaultPage(HttpServletRequest request){
+        return MAPPING_HOME;
     }
+
+    @GetMapping(MAPPING_HOME)
+    public String home(HttpServletRequest request){
+        return MAPPING_HOME;
+    }
+
 }

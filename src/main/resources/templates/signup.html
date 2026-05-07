@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head}"></head>
+<body class="bg-light">
+
+<div th:replace="~{fragments/layout :: navbar}"></div>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h3 class="card-title text-center mb-4" th:text="#{signup.title}">Sign Up</h3>
+
+                    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                    <form th:action="@{/signup}" method="post">
+                        <div class="mb-3">
+                            <label class="form-label" th:text="#{signup.username}">Username</label>
+                            <input type="text" name="username" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" th:text="#{signup.name}">Name</label>
+                            <input type="text" name="name" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" th:text="#{signup.password}">Password</label>
+                            <input type="password" name="password" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" th:text="#{signup.fire.department.id}">Fire Department ID</label>
+                            <input type="number" name="fire_department_id" class="form-control" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" th:text="#{signup.internal.id}">Internal ID</label>
+                            <input type="number" name="internal_id" class="form-control" required/>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary" th:text="#{signup.button}">Create Account</button>
+                        </div>
+                    </form>
+
+                    <hr/>
+                    <p class="text-center mb-0">
+                        <span th:text="#{signup.have.account}">Already have an account?</span>
+                        <a href="/login" th:text="#{signup.login.link}">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

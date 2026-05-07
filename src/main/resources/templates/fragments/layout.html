@@ -1,18 +1,36 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title th:text="#{app.title}">myAmb</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚑</text></svg>"/>
 
+    <!-- Styles and bootstrap CSS import -->
+    <th:block th:replace="~{fragments/styling :: styles}"></th:block>
+
+    <!--  JS imports  -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-<nav th:fragment="navbar" class="navbar navbar-light bg-dark border-bottom px-4">
-    <span class="navbar-brand text-light" th:text="#{app.title}"></span>
+<nav th:fragment="navbar" class="navbar navbar-light border-bottom px-4">
+    <span class="navbar-brand" th:text="#{app.title}"></span>
+
+    <!--    Hamburger Menu for mobile only-->
+    <button class="navbar-toggler d-md-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMenu"
+            aria-expanded="false">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--  Hamburger Menu Contents  -->
+    <div class="collapse navbar-collapse d-md-none" id="navbarMenu">
+        <div class="d-flex flex-column gap-2 py-2">
 
     <div class="dropdown">
         <button class="btn btn-outline-secondary btn-sm dropdown-toggle align-items-center"
@@ -28,6 +46,23 @@
         </ul>
     </div>
 
+            <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+                <button type="submit" class="btn btn-outline-secondary w-100" th:text="#{nav.logout}">Logout</button>
+            </form>
+
+        </div>
+    </div>
+
+
+    <!-- NavBar for Desktop-->
+    <div class="d-none d-md-flex align-items-center gap-2">
+
+
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+            <button type="submit" class="btn btn-outline-dark" th:text="#{nav.logout}">Logout</button>
+        </form>
+
+    </div>
 </nav>
 
 </body>
