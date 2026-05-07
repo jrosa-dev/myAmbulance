@@ -32,19 +32,18 @@
     <div class="collapse navbar-collapse d-md-none" id="navbarMenu">
         <div class="d-flex flex-column gap-2 py-2">
 
-    <div class="dropdown">
-        <button class="btn btn-outline-secondary btn-sm dropdown-toggle align-items-center"
-                type="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false">
-            <span th:text="${#locale.language == 'en' ? 'EN' : 'PT'}">PT</span>
-        </button>
-
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="?lang=en">EN</a></li>
-            <li><a class="dropdown-item" href="?lang=pt">PT</a></li>
-        </ul>
-    </div>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    <span th:text="${#locale.language == 'en' ? 'EN' : 'PT'}">PT</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="?lang=en">EN</a></li>
+                    <li><a class="dropdown-item" href="?lang=pt">PT</a></li>
+                </ul>
+            </div>
 
             <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
                 <button type="submit" class="btn btn-outline-secondary w-100" th:text="#{nav.logout}">Logout</button>
@@ -57,6 +56,18 @@
     <!-- NavBar for Desktop-->
     <div class="d-none d-md-flex align-items-center gap-2">
 
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <span th:text="${#locale.language == 'en' ? 'EN' : 'PT'}">PT</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="?lang=en">EN</a></li>
+                <li><a class="dropdown-item" href="?lang=pt">PT</a></li>
+            </ul>
+        </div>
 
         <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
             <button type="submit" class="btn btn-outline-dark" th:text="#{nav.logout}">Logout</button>
