@@ -15,6 +15,9 @@
 
                 <button sec:authorize="hasAnyRole('ACTIVE', 'CHIEF', 'COMMAND')"
                         th:text="#{btn.checkLatestRegister}" class="btn btn-primary py-5 py-lg-3"></button>
+
+                <a sec:authorize="hasAnyRole('COMMAND')" th:href="@{/utilizadores}"
+                        th:text="#{btn.manageUsers}" class="btn btn-primary py-5 py-lg-3"></a>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 public class User {
 
-    //  If "required" is removed, in the signup page by inspect element in the browser,
+    //  If HTML "required" is removed, in the signup page by inspect element in the browser,
     //  no error message and the user will NOT be saved to the database
 
     @Id
@@ -27,10 +27,10 @@ public class User {
     private String name;
 
     @Column(nullable = false)
-    private Long fire_department_id;
+    private Long fireDepartmentId;
 
     @Column(nullable = false)
-    private Long internal_id;
+    private Long internalId;
 
     @Column(nullable = false)
     private String role = "ROLE_UNASSIGNED";

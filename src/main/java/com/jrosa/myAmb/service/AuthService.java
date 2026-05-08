@@ -21,7 +21,7 @@ public class AuthService {
 
 
     public void register(String username, String name, String password,
-                         Long fire_department_id, Long internal_id, Locale locale) {
+                         Long fireDepartmentId, Long internalId, Locale locale) {
         if (userRepository.existsByUsername(username)) {
             throw new RuntimeException(messageSource.getMessage(ERROR_USERNAME_TAKEN, null, locale));
         }
@@ -35,8 +35,8 @@ public class AuthService {
         user.setUsername(username);
         user.setName(name);
         user.setPassword(passwordEncoder.encode(password));
-        user.setFire_department_id(fire_department_id);
-        user.setInternal_id(internal_id);
+        user.setFireDepartmentId(fireDepartmentId);
+        user.setInternalId(internalId);
         user.setRole(DEFAULT_ROLE.name());
 
         userRepository.save(user);

@@ -35,15 +35,14 @@ public class AuthController {
             @RequestParam String username,
             @RequestParam String name,
             @RequestParam String password,
-            @RequestParam Long fire_department_id,
-            @RequestParam Long internal_id,
+            @RequestParam Long fireDepartmentId,
+            @RequestParam Long internalId,
             Locale locale,
             RedirectAttributes redirectAttributes
     ) {
         try {
-            authService.register(username, name, password, fire_department_id, internal_id,locale);
-            redirectAttributes.addFlashAttribute("success",
-                    messageSource.getMessage(SUCCESS_ACCOUNT_CREATED, null, locale));
+            authService.register(username, name, password, fireDepartmentId, internalId,locale);
+            redirectAttributes.addFlashAttribute("success", messageSource.getMessage(SUCCESS_ACCOUNT_CREATED, null, locale));
             return "redirect:"+MAPPING_LOGIN;
         } catch (RuntimeException e) {
             redirectAttributes.addFlashAttribute("error", e.getMessage());
