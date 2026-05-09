@@ -3,13 +3,13 @@
 <img src="images/myAmbulance.png" alt="myAmbulance" width="900"/>
 
 
-A web application for managing ambulance fleets and medical supply logistics, built with a Spring Boot REST API backend and Bootstrap 5 frontend
+A web application for managing ambulance fleets and medical supply logistics
 
 ---
 
 ## Tech Stack
 
-Java 17 · Spring Boot 4.1.0 · PostgreSQL 18 · Bootstrap 5
+Java 17 · Spring Boot 4 · PostgreSQL 18 · Bootstrap 5
 
 ---
 
@@ -31,6 +31,12 @@ This project follows the [Conventional Commits](https://www.conventionalcommits.
 - Ambulance creation and management
 - Consumable item catalogue
 - Item assignment to ambulances
+
+---
+
+## Data Model
+
+<img src="images/Data%20Model.png" alt="Data Model"/>
 
 ---
 
