@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<aside th:fragment="sidebar"
+       id="layout-menu"
+       class="layout-menu menu-vertical menu bg-menu-theme shadow">
+
+
+    <div class="app-brand demo px-5 py-5">
+        <a th:href="@{/inicio}" class="app-brand-link gap-2">
+            <i class="menu-icon icon-base ri ri-pulse-fill"></i>
+            <span class="app-brand-text demo menu-text fw-semibold ms-2"
+                  th:text="#{app.title}">myAmb</span>
+        </a>
+    </div>
+
+    <ul class="menu-inner py-1">
+        <li class="menu-header p-0">
+            <hr class="m-0">
+        </li>
+
+        <li class="menu-item"
+
+            sec:authorize="hasAnyRole('INTERN', 'ACTIVE', 'CHIEF', 'COMMAND')">
+            <a th:href="@{/inicio}" class="menu-link">
+                <i class="menu-icon icon-base ri ri-add-fill"></i>
+                <div th:text="#{btn.newRegister}"></div>
+            </a>
+        </li>
+
+        <li class="menu-item"
+            sec:authorize="hasAnyRole('ACTIVE', 'CHIEF', 'COMMAND')">
+            <a th:href="@{/inicio}" class="menu-link">
+                <i class="menu-icon icon-base ri ri-menu-search-line"></i>
+                <div th:text="#{btn.checkLatestRegister}"></div>
+            </a>
+        </li>
+
+        <li class="menu-item"
+            sec:authorize="hasRole('COMMAND')">
+            <a th:href="@{/utilizadores}" class="menu-link">
+                <i class="menu-icon icon-base ri ri-team-fill"></i>
+                <div th:text="#{btn.manageUsers}"></div>
+            </a>
+        </li>
+
+
+        <li class="menu-header p-0">
+            <hr class="m-0">
+        </li>
+
+
+        <li class="menu-item">
+            <a class="menu-link menu-toggle">
+                <i class="menu-icon icon-base ri ri-translate-2"></i>
+                <div th:text="#{language.current}"></div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a th:href="@{?lang=en}" class="menu-link">
+                        <div th:text="#{language.en}"></div>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a th:href="@{?lang=pt}" class="menu-link">
+                        <div th:text="#{language.pt}"></div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="menu-item" sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post" style="margin: 0;">
+                <button type="submit" class="menu-link w-100"
+                        style="border: none; background: none; text-align: left;">
+                    <i class="menu-icon icon-base ri ri-logout-box-line"></i>
+                    <span th:text="#{nav.logout}">Logout</span>
+                </button>
+            </form>
+        </li>
+
+
+
+    </ul>
+</aside>
+</body>
+</html>

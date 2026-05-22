@@ -2,6 +2,9 @@
 <br>
 <img src="images/myAmbulance.png" alt="myAmbulance" width="900"/>
 
+---
+
+## myAmbulance
 
 A web application for managing ambulance fleets and medical supply logistics
 
@@ -41,6 +44,16 @@ This project follows the [Conventional Commits](https://www.conventionalcommits.
 ---
 
 ## Screenshoots
+
+[Materio Dashboard Template](https://themeselection.com/item/materio-dashboard-free-bootstrap/)
+
+<p>
+  <img src="images/New%20User%20Management.PNG" alt="New User Management" width="750"/>
+</p>
+
+---
+
+## Old Screenshoots
 
 <p>
   <img src="images/Login%20Page.PNG" alt="Login Page" width="375" height="690" style="object-fit: cover; object-position: top;"/>

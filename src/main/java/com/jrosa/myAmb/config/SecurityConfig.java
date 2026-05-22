@@ -32,7 +32,12 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(MAPPING_LOGIN, MAPPING_SIGNUP, "/css/**", "/js/**").permitAll()
+                        .requestMatchers(MAPPING_LOGIN, MAPPING_SIGNUP,
+                                "/css/**",
+                                "/js/**",
+                                "/assets/**",
+                                "/images/**",
+                                "/webjars/**").permitAll()
                         .anyRequest().authenticated() // If it isn't a login or sign up don't allow
                                                       // anything without being authenticated
                 )

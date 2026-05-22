@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{fragments/layout :: head}"></head>
-<body class="bg-light">
+      layout:decorate="~{layout}">
 
-    <div th:replace="~{fragments/layout :: navbar}"></div>
+<div layout:fragment="content">
 
     <div class="container mt-5">
 
@@ -25,7 +23,7 @@
                         <td th:text="${user.username}"></td>
                         <td th:text="${user.name}"></td>
                         <td th:text="${user.internalId}"></td>
-                        <td>
+                        <td th:attr="data-order=#{${'role.' + user.role}}">
                             <form th:action="@{/utilizadores/alterar}" method="post"
                                   class="d-flex align-items-center">
 
@@ -58,11 +56,19 @@
         </div>
     </div>
 
-</body>
+</div>
+
+<div layout:fragment="page-scripts">
+    <script th:inline="none"> // forces thymeleaf to ignore this
+    $(document).ready(function () {
+        $('#usersTable').DataTable({
+            pageLength: -1,
+            dom: 'frti',  // remove length dropdown
+            order: [[2, 'asc']] // sort by internal ID
+        });
+    });
+    </script>
+</div>
+
 </html>
 
-<script>
-    $(document).ready(function () {
-        $('#usersTable').DataTable();
-    });
-</script>
